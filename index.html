@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>16대 정책위원회 활동 참여 설문</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --paper:#FAF7F1;
+    --paper-2:#F2ECE1;
+    --ink:#1B2A26;
+    --ink-soft:#4A5852;
+    --line:#DED6C7;
+    --green:#2F5D50;
+    --green-deep:#244A40;
+    --green-tint:#E8F0EC;
+    --clay:#B9683E;
+    --clay-tint:#F6E7DC;
+    --white:#FFFFFF;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(27,42,38,.04), 0 8px 24px rgba(27,42,38,.06);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-0.01em;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 96px;}
+
+  /* ---------- Header ---------- */
+  header.hero{padding:64px 0 40px;border-bottom:1px solid var(--line);}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:700;letter-spacing:0.04em;
+    color:var(--green);text-transform:none;
+  }
+  .eyebrow::before{content:"";width:22px;height:1.5px;background:var(--green);display:inline-block;}
+  h1{
+    font-size:clamp(28px,6vw,40px);
+    line-height:1.22;font-weight:800;margin:18px 0 16px;letter-spacing:-0.03em;
+  }
+  .lede{font-size:16px;color:var(--ink-soft);margin:0 0 24px;max-width:60ch;}
+  .principle{
+    background:var(--green-tint);
+    border:1px solid #CFE0D8;
+    border-radius:var(--radius);
+    padding:16px 18px;font-size:14.5px;color:var(--green-deep);
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .principle b{font-weight:700;}
+  .principle .mk{flex:none;font-weight:700;}
+
+  /* ---------- Section ---------- */
+  section{padding:44px 0 8px;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;}
+  .sec-num{
+    font-family:"Fraunces",serif;font-size:18px;font-weight:600;
+    color:var(--clay);font-feature-settings:"tnum";
+  }
+  .sec-head h2{font-size:21px;font-weight:800;margin:0;letter-spacing:-0.02em;}
+  .sec-desc{font-size:14px;color:var(--ink-soft);margin:0 0 22px;}
+
+  /* ---------- Fields ---------- */
+  .field{margin-bottom:18px;}
+  label.lab{display:block;font-size:14px;font-weight:700;margin-bottom:7px;}
+  label.lab .req{color:var(--clay);margin-left:3px;}
+  input[type=text],input[type=email],textarea{
+    width:100%;border:1px solid var(--line);background:var(--white);
+    border-radius:10px;padding:12px 14px;font:inherit;color:var(--ink);
+    transition:border-color .15s, box-shadow .15s;
+  }
+  input:focus,textarea:focus{
+    outline:none;border-color:var(--green);
+    box-shadow:0 0 0 3px var(--green-tint);
+  }
+  textarea{resize:vertical;min-height:96px;line-height:1.6;}
+  .hint{font-size:12.5px;color:var(--ink-soft);margin-top:6px;}
+
+  /* ---------- Timeline / topics ---------- */
+  .year{position:relative;padding-left:64px;margin-bottom:30px;}
+  .year::before{
+    content:"";position:absolute;left:23px;top:8px;bottom:-30px;
+    width:2px;background:var(--line);
+  }
+  .year:last-child::before{display:none;}
+  .yr-num{
+    position:absolute;left:0;top:-4px;
+    font-family:"Fraunces",serif;font-size:19px;font-weight:600;
+    color:var(--green);background:var(--paper);
+    width:48px;text-align:center;line-height:1.3;font-feature-settings:"tnum";
+    padding:2px 0;
+  }
+  .yr-period{font-size:12.5px;color:var(--ink-soft);margin:0 0 14px;font-weight:600;}
+  .cat-group{margin-bottom:14px;}
+  .cat-label{
+    font-size:12px;font-weight:800;letter-spacing:0.04em;color:var(--ink-soft);
+    margin-bottom:7px;
+  }
+  .opt{
+    display:flex;align-items:flex-start;gap:11px;
+    border:1px solid var(--line);background:var(--white);
+    border-radius:11px;padding:12px 14px;margin-bottom:8px;cursor:pointer;
+    transition:border-color .15s,background .15s,box-shadow .15s;
+  }
+  .opt:hover{border-color:#C4D6CD;}
+  .opt input{margin:3px 0 0;width:18px;height:18px;accent-color:var(--green);flex:none;cursor:pointer;}
+  .opt .otext{flex:1;}
+  .opt .otitle{font-size:14.5px;font-weight:600;line-height:1.45;}
+  .opt .ometa{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+  .opt.checked{border-color:var(--green);background:var(--green-tint);box-shadow:0 0 0 1px var(--green) inset;}
+  .tag{
+    display:inline-block;font-size:11px;font-weight:700;
+    background:var(--clay-tint);color:var(--clay);
+    padding:1px 7px;border-radius:999px;margin-left:6px;vertical-align:middle;
+  }
+
+  /* ---------- Roles (chips) ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .chip{position:relative;cursor:pointer;}
+  .chip input{position:absolute;opacity:0;pointer-events:none;}
+  .chip span{
+    display:block;border:1px solid var(--line);background:var(--white);
+    border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;
+    transition:all .15s;
+  }
+  .chip:hover span{border-color:#C4D6CD;}
+  .chip input:checked + span{
+    background:var(--green);border-color:var(--green);color:#fff;
+  }
+  .chip input:focus-visible + span{box-shadow:0 0 0 3px var(--green-tint);}
+  .role-defs{font-size:12.5px;color:var(--ink-soft);margin-top:14px;line-height:1.7;}
+  .role-defs b{color:var(--ink);font-weight:700;}
+
+  /* ---------- Submit ---------- */
+  .actions{padding-top:36px;}
+  button.submit{
+    width:100%;background:var(--green);color:#fff;border:none;
+    border-radius:12px;padding:16px;font:inherit;font-weight:800;font-size:16px;
+    cursor:pointer;transition:background .15s,transform .05s;letter-spacing:-0.01em;
+  }
+  button.submit:hover{background:var(--green-deep);}
+  button.submit:active{transform:translateY(1px);}
+  button.submit:disabled{opacity:.55;cursor:not-allowed;}
+  .err{color:var(--clay);font-size:13.5px;margin-top:12px;text-align:center;display:none;}
+
+  /* ---------- Done state ---------- */
+  .done{display:none;text-align:center;padding:90px 16px;}
+  .done .mark{
+    width:64px;height:64px;border-radius:50%;background:var(--green-tint);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+  }
+  .done .mark svg{width:30px;height:30px;stroke:var(--green);}
+  .done h2{font-size:24px;font-weight:800;margin:0 0 10px;}
+  .done p{color:var(--ink-soft);margin:0;font-size:15px;}
+
+  @media (max-width:560px){
+    header.hero{padding:44px 0 32px;}
+    .year{padding-left:52px;}
+    .year::before{left:19px;}
+    .yr-num{width:40px;font-size:17px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+
+  <header class="hero">
+    <span class="eyebrow">서울특별시사회복지사협회 · 16대 정책위원회</span>
+    <h1>정책위원 활동 참여 설문</h1>
+    <p class="lede">2026–2028 정책위원회 3개년 활동(안)에 대한 위원님의 참여 의향을 확인합니다. 함께하고 싶은 주제와 역할을 선택하고, 이슈리포트·정책세미나에 대한 의견을 자유롭게 남겨 주세요.</p>
+    <div class="principle">
+      <span class="mk">참여 원칙</span>
+      <span>3년의 활동 중 <b>연구 1개</b> 또는 <b>정책세미나·이슈리포트 2개</b>에 집중 참여하는 것을 기준으로 합니다. 관심 주제는 부담 없이 복수로 선택하셔도 좋습니다.</span>
+    </div>
+  </header>
+
+  <!-- 1. 응답자 정보 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>위원 정보</h2></div>
+    <p class="sec-desc">응답을 정리하고 후속 안내를 드리기 위한 기본 정보입니다.</p>
+    <div class="field">
+      <label class="lab" for="name">성함<span class="req">*</span></label>
+      <input type="text" id="name" placeholder="홍길동">
+    </div>
+    <div class="field">
+      <label class="lab" for="org">소속 기관 / 직위</label>
+      <input type="text" id="org" placeholder="○○종합사회복지관 / 과장">
+    </div>
+    <div class="field">
+      <label class="lab" for="contact">연락 가능한 이메일 또는 연락처<span class="req">*</span></label>
+      <input type="text" id="contact" placeholder="email@example.com 또는 010-0000-0000">
+    </div>
+  </section>
+
+  <!-- 2. 참여 희망 주제 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>참여하고 싶은 주제</h2></div>
+    <p class="sec-desc">연도별 활동(안)입니다. 집중 참여하고 싶은 연구·이슈리포트·정책세미나를 선택해 주세요.</p>
+    <div id="topics"></div>
+  </section>
+
+  <!-- 3. 역할 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>맡고 싶은 역할</h2></div>
+    <p class="sec-desc">선택한 주제에서 맡아 주실 수 있는 역할을 모두 골라 주세요.</p>
+    <div class="chips" id="roles"></div>
+    <p class="role-defs">
+      <b>좌장</b> 세미나 진행·총괄 · <b>발표자</b> 연구·리포트 결과 발표 · <b>토론자</b> 패널 토론 참여 ·
+      <b>저자</b> 이슈리포트 집필 · <b>연구진</b> 연구 수행 · <b>FGI 참여자</b> 현장 의견 제공
+    </p>
+  </section>
+
+  <!-- 4. 의견 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>이슈리포트·정책세미나 의견</h2></div>
+    <p class="sec-desc">다루면 좋을 주제, 미정 항목에 대한 제안, 방향에 대한 의견을 자유롭게 적어 주세요.</p>
+    <div class="field">
+      <textarea id="opinion" placeholder="예) 2026 정책세미나1 주제로 '통합돌봄 현장 인력'을 제안합니다 / 2028 이슈리포트 미정 항목은 '소진과 회복'을 다루면 좋겠습니다."></textarea>
+    </div>
+  </section>
+
+  <!-- 5. 추천 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>참여자 추천</h2></div>
+    <p class="sec-desc">좌장·발표자·토론자·저자·연구진·FGI 참여자로 추천하고 싶은 분이 있다면 알려 주세요. (선택)</p>
+    <div class="field">
+      <textarea id="recommend" placeholder="예) AI 실천윤리 세미나 토론자로 ○○○ 교수님 추천 / 통합돌봄 FGI에 ○○복지관 △△△ 선생님 추천"></textarea>
+    </div>
+  </section>
+
+  <!-- Submit -->
+  <div class="actions">
+    <button class="submit" id="submitBtn">응답 제출하기</button>
+    <p class="err" id="errMsg">필수 항목을 확인해 주세요.</p>
+  </div>
+</div>
+
+<!-- Done -->
+<div class="wrap done" id="doneScreen">
+  <div class="mark">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+  </div>
+  <h2>응답이 제출되었습니다</h2>
+  <p>소중한 의견 감사합니다. 정리 후 활동 일정과 함께 안내드리겠습니다.</p>
+</div>
+
+<script>
+  /* ====== 설정: 배포한 Apps Script 웹앱 URL을 넣으세요 ====== */
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzNCoK0iPExf0MUYuCLVsxEDsgWRTeJXrZFEWrBVZpzbNujAJdu68FpZiJ30B_BCdgl/exec";
+
+  /* ====== 활동(안) 데이터 ====== */
+  const PLAN = [
+    { year:"2026", period:"연구 수행 2026.6 ~ 12", groups:[
+      { cat:"연구", items:[
+        { t:"AI 실천윤리 가이드라인", m:"연구진: 황흥기 · 2026.6~12" },
+      ]},
+      { cat:"정책세미나", items:[
+        { t:"정책세미나1 — 주제 미정 (통합돌봄·사업인력 등)", m:"2026.9", tbd:true },
+        { t:"정책세미나2 — AI 실천윤리 가이드라인", m:"2026.12" },
+      ]},
+      { cat:"이슈리포트", items:[
+        { t:"이슈리포트1 — 서울시 통합돌봄", m:"2026.8" },
+        { t:"이슈리포트2 — 일자리의 조건: 사업인력", m:"2026.10" },
+        { t:"이슈리포트3 — 사회복지사 일자리의 긍정적 변화", m:"2026.12" },
+      ]},
+    ]},
+    { year:"2027", period:"연구 수행 2027.1 ~ 7", groups:[
+      { cat:"연구", items:[
+        { t:"조례기반시설 일자리 질 개선 방안", m:"2027.1~7" },
+      ]},
+      { cat:"정책세미나", items:[
+        { t:"정책세미나1 — 주제 미정", m:"2027.7", tbd:true },
+        { t:"정책세미나2 — 조례기반시설 일자리 질 개선 방안", m:"2027.12" },
+      ]},
+      { cat:"이슈리포트", items:[
+        { t:"이슈리포트1 — 일자리 질1: 고용형태 및 임금", m:"2027.3" },
+        { t:"이슈리포트2 — 일자리 질2: 승진 및 성과평가", m:"2027.6" },
+        { t:"이슈리포트3 — 일자리 질3: 일생활균형 및 복리후생", m:"2027.9" },
+        { t:"이슈리포트4 — 일자리 질4: 일생활균형 및 복리후생", m:"2027.12" },
+      ]},
+    ]},
+    { year:"2028", period:"연구 수행 2028.1 ~ 7", groups:[
+      { cat:"연구", items:[
+        { t:"사회복지사 직업 유지 방안 (처우개선)", m:"2028.1~7" },
+      ]},
+      { cat:"정책세미나", items:[
+        { t:"정책세미나1 — 주제 미정", m:"2028.7", tbd:true },
+        { t:"정책세미나2 — 주제 미정", m:"2028.12", tbd:true },
+      ]},
+      { cat:"이슈리포트", items:[
+        { t:"이슈리포트1 — 전문직업적 정체성", m:"2028.3" },
+        { t:"이슈리포트2 — 좋은 직장 문화", m:"2028.6" },
+        { t:"이슈리포트3 — 주제 미정", m:"2028.9", tbd:true },
+        { t:"이슈리포트4 — 주제 미정", m:"2028.12", tbd:true },
+      ]},
+    ]},
+  ];
+
+  const ROLES = ["좌장","발표자","토론자","저자","연구진","FGI 참여자"];
+
+  /* ====== 렌더링 ====== */
+  const topicsEl = document.getElementById("topics");
+  PLAN.forEach(y=>{
+    const yr = document.createElement("div");
+    yr.className = "year";
+    let html = `<div class="yr-num">${y.year}</div><p class="yr-period">${y.period}</p>`;
+    y.groups.forEach(g=>{
+      html += `<div class="cat-group"><div class="cat-label">${g.cat}</div>`;
+      g.items.forEach(it=>{
+        const val = `${y.year} · ${it.t}`;
+        const tag = it.tbd ? `<span class="tag">제안 환영</span>` : "";
+        html += `
+          <label class="opt">
+            <input type="checkbox" class="topic" value="${val.replace(/"/g,'&quot;')}">
+            <span class="otext">
+              <span class="otitle">${it.t}${tag}</span>
+              <span class="ometa">${it.m}</span>
+            </span>
+          </label>`;
+      });
+      html += `</div>`;
+    });
+    yr.innerHTML = html;
+    topicsEl.appendChild(yr);
+  });
+
+  const rolesEl = document.getElementById("roles");
+  ROLES.forEach(r=>{
+    const lab = document.createElement("label");
+    lab.className = "chip";
+    lab.innerHTML = `<input type="checkbox" class="role" value="${r}"><span>${r}</span>`;
+    rolesEl.appendChild(lab);
+  });
+
+  /* 선택 시 카드 강조 */
+  topicsEl.addEventListener("change", e=>{
+    if(e.target.classList.contains("topic")){
+      e.target.closest(".opt").classList.toggle("checked", e.target.checked);
+    }
+  });
+
+  /* ====== 제출 ====== */
+  const btn = document.getElementById("submitBtn");
+  const errMsg = document.getElementById("errMsg");
+
+  function showErr(msg){ errMsg.textContent = msg; errMsg.style.display = "block"; }
+
+  btn.addEventListener("click", async ()=>{
+    const name = document.getElementById("name").value.trim();
+    const org = document.getElementById("org").value.trim();
+    const contact = document.getElementById("contact").value.trim();
+    const topics = [...document.querySelectorAll(".topic:checked")].map(c=>c.value);
+    const roles = [...document.querySelectorAll(".role:checked")].map(c=>c.value);
+    const opinion = document.getElementById("opinion").value.trim();
+    const recommend = document.getElementById("recommend").value.trim();
+
+    errMsg.style.display = "none";
+    if(!name){ showErr("성함을 입력해 주세요."); return; }
+    if(!contact){ showErr("연락 가능한 이메일 또는 연락처를 입력해 주세요."); return; }
+    if(topics.length === 0){ showErr("참여하고 싶은 주제를 최소 1개 선택해 주세요."); return; }
+
+    const payload = {
+      name, org, contact,
+      topics: topics.join("\n"),
+      roles: roles.join(", "),
+      opinion, recommend
+    };
+
+    btn.disabled = true;
+    btn.textContent = "제출 중…";
+
+    try{
+      await fetch(ENDPOINT, {
+        method: "POST",
+        // text/plain → CORS preflight 회피 (Apps Script 표준 패턴)
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+      document.getElementById("app").style.display = "none";
+      document.getElementById("doneScreen").style.display = "block";
+      window.scrollTo({ top:0, behavior:"smooth" });
+    }catch(err){
+      btn.disabled = false;
+      btn.textContent = "응답 제출하기";
+      showErr("제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+    }
+  });
+</script>
+</body>
+</html>
